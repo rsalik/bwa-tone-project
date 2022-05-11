@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useCallback } from 'react';
 import './App.css';
+import ColumnLabels from './components/ColumnLabels';
+import MachineRow from './components/MachineRow';
+import { NOTES, start as toggleStart } from './music';
 
 function App() {
+  const [activeColumn, setActiveColumn] = React.useState(undefined as number | undefined);
+  const [playing, setPlaying] = React.useState(false);
+
+  const onPlayColumn = useCallback((column: number) => {
+    setActiveColumn(column);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="machine">
+        <ColumnLabels />
+        {NOTES.map((note) => {
+          return <MachineRow note={note} activeColumn={activeColumn} key={note} />;
+        })}
+      </div>
+      <br />
+      <div
+        className="btn"
+        onClick={() => {
+          setPlaying(!playing);
+          toggleStart(onPlayColumn);
+        }}
+      >
+        {playing ? 'Stop' : 'Play'}
+      </div>
     </div>
   );
 }

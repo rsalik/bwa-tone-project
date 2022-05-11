@@ -1,38 +1,133 @@
+html,
+body,
+#root,
 .App {
+  min-height: 100%;
+  background: rgb(43, 50, 53);
+}
+
+.App {
+  height: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.machine {
+  display: inline-block;
+
+  margin: 1em 0;
+  padding: 1em 0.5em;
+
+  border: 4px solid white;
+  border-radius: 20px;
+
+  background: #26aa94;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.machine .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0.1em 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.machine .row .inner {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  font-weight: bold;
+
+  padding: 0.1em 1.5em 0.1em 0.5em;
+}
+
+.machine .row.sharp .inner {
+  color: black;
+}
+
+.machine .row.sharp .inner .cell {
+  background: #1f1f1f;
+}
+
+.machine .row .cell {
+  width: 20px;
+  height: 20px;
+
+  display: inline-block;
+
+  margin: 1px;
+
+  border-radius: 3px;
+  background: hsl(170, 88%, 91%);
+
+  cursor: pointer;
+}
+
+.machine .row .note-name {
+  display: inline-block;
+  width: 3em;
+}
+
+.machine .row .cell.on {
+  background: rgb(194, 194, 247);
+}
+
+.machine .row.sharp .cell.on {
+  background: rgb(86, 86, 156);
+}
+
+.machine .row .cell.active {
+  background: hsl(34, 94%, 52%);
+}
+
+.machine .row.sharp .cell.active {
+  background: hsl(34, 94%, 38%);
+}
+
+.machine .row .cell.on.active {
+  background: hsl(110, 100%, 68%);
+}
+
+.machine .row.sharp .cell.on.active {
+  background: hsl(110, 89%, 30%);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 2em;
+
+  padding: 0.2em 0.5em;
+
+  border-radius: 20px;
+
+  border: 4px solid rgb(38, 170, 148);
+
+  background: #43f3d6;
+
+  cursor: pointer;
+
+  transition: 0.1s background ease-in-out;
+}
+
+.btn:hover {
+  background: #26aa94;
+}
+
+.row.column-labels .inner .cell {
+  font-size: 0.8rem;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+
+  background: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row.column-labels .inner .cell:nth-of-type(even) {
+  background: rgb(255, 223, 42);
 }
