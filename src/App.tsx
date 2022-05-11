@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import './App.css';
 import ColumnLabels from './components/ColumnLabels';
 import MachineRow from './components/MachineRow';
